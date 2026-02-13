@@ -1,4 +1,77 @@
-<a rel="ar"
-   href="intent://arvr.google.com/scene-viewer/1.0?file=https://ubikmx.github.io/test_ar/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;">
-  Ver en AR
-</a>
+
+https://ubikmx.github.io/test_ar/model.glb
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AR Test</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      background: #00c2ff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #00a3d6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Prueba AR</h1>
+  <p>Coloca el modelo en tu espacio</p>
+
+  <!-- Botón AR -->
+  <a id="ar-btn" class="btn" href="#">Ver en AR</a>
+
+  <script>
+    // URL absoluta del modelo
+    const modelUrl = new URL('model.glb', window.location.href).toString();
+
+    // Detectar Android
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+      // Scene Viewer
+      const intent = 
+        'intent://arvr.google.com/scene-viewer/1.0' +
+        '?file=' + 'https://ubikmx.github.io/test_ar/model.glb' +
+        '&mode=ar_preferred' +
+        '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;';
+
+      document.getElementById('ar-btn').href = intent;
+
+    } else {
+      // Fallback normal (preview web)
+      document.getElementById('ar-btn').href = modelUrl;
+      document.getElementById('ar-btn').innerText = 'Ver modelo 3D';
+    }
+  </script>
+
+</body>
+</html>
+
