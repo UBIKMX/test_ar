@@ -45,13 +45,10 @@
   <a id="ar-btn" class="btn" href="#" target="_blank" rel="noopener">Ver en AR</a>
 
   <script>
-  const base = location.href.endsWith('/') ? location.href : location.href + '/';
-  const modelUrl = new URL('./model.glb', base).toString();
-
   // OJO: sin intent, sin package
   const sceneViewerUrl =
     'https://arvr.google.com/scene-viewer/1.0' +
-    '?file=' + encodeURIComponent(modelUrl) +
+    '?file=' + 'https://ubikmx.github.io/test_ar/model.glb' +
     '&mode=ar_preferred';
 
   document.getElementById('ar-btn').href = sceneViewerUrl;
