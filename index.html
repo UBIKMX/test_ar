@@ -42,11 +42,14 @@
   <p>Coloca el modelo en tu espacio</p>
 
   <!-- Botón AR -->
-  <a id="ar-btn" class="btn" href="#">Ver en AR</a>
+  <a id="ar-btn" class="btn" href="#">Ver en AR android</a>
+
+  <a id="ar" class="btn" href="#">Ver en AR ios</a>
 
   <script>
     // URL absoluta del modelo
-    const modelUrl = new URL('model.glb', window.location.href).toString();
+    const modelUrl = new URL('model.gltf', window.location.href).toString();
+    const modelUrl2 = new URL('model.usdz', window.location.href).toString();
 
     // Detectar Android
     const isAndroid = /Android/i.test(navigator.userAgent);
@@ -55,7 +58,7 @@
       // Scene Viewer
       const intent = 
         'intent://arvr.google.com/scene-viewer/1.0' +
-        '?file=' + 'https://ubikmx.github.io/test_ar/model.glb' +
+        '?file=' + 'https://ubikmx.github.io/test_ar/model.gltf' +
         '&mode=ar_preferred' +
         '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;';
 
@@ -63,8 +66,8 @@
 
     } else {
       // Fallback normal (preview web)
-      document.getElementById('ar-btn').href = modelUrl;
-      document.getElementById('ar-btn').innerText = 'Ver modelo 3D';
+      document.getElementById('ar').href = modelUrl2;
+      document.getElementById('ar').innerText = 'Ver modelo 3D';
     }
   </script>
 
